@@ -21,7 +21,6 @@ app.use(express.json());
 const location = new mongoose.Schema({
   lat: String,
   long: String,
-  req: String,
 });
 
 const Locations = new mongoose.model("Location", location);
@@ -29,8 +28,6 @@ const Locations = new mongoose.model("Location", location);
 app.post("/location", async (req, res) => {
   try {
     const { latitude, longitude } = req.body;
-
-    const request = JSON.stringify(req);
 
     const location = Locations({
       lat: latitude,
